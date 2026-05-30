@@ -1,7 +1,9 @@
 describe('Login', () => {
-  it('Realizar login com sucesso', () => {
+  beforeEach(() => {
     cy.visit('https://www.saucedemo.com/')
+  })
 
+  it('Realizar login com sucesso', () => {
     cy.get('[data-test="username"]').type('standard_user')
     cy.get('[data-test="password"]').type('secret_sauce')
     cy.get('[data-test="login-button"]').click()
@@ -12,8 +14,6 @@ describe('Login', () => {
   })
 
   it('Retornar erro ao logar com usuário inexistente', () => {
-    cy.visit('https://www.saucedemo.com/')
-
     cy.get('[data-test="username"]').type('user_invalid')
     cy.get('[data-test="password"]').type('12345678')
     cy.get('[data-test="login-button"]').click()
